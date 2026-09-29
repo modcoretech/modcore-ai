@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "modcore AI",
+  "version": "0.1",
+  "description": "Local & cloud AI workspace with native Chrome automation.",
+  "permissions": [
+    "tabs", "tabGroups", "management", "storage",
+    "bookmarks", "activeTab", "history", "unlimitedStorage"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_title": "Open modcore AI" }
+}

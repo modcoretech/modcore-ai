@@ -1,0 +1,145 @@
+/* ============================================================================
+   App shell: left sidebar (nav) + main workspace. Right panel is in sidebar.css.
+   ========================================================================== */
+
+.app-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg-main);
+  position: relative;
+}
+
+.app-container.drag-active::after {
+  content: 'Drop files to attach';
+  position: fixed;
+  inset: 0;
+  background: rgba(109, 167, 236, 0.08);
+  border: 2px dashed var(--accent);
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* ---------- Left sidebar ---------- */
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--bg-sidebar);
+  display: flex;
+  flex-direction: column;
+  padding: 0.85rem 0.6rem;
+  gap: 0.3rem;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 0.55rem 0.6rem;
+}
+
+.brand-name {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.005em;
+  color: var(--text-primary);
+}
+
+.new-chat-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  transition: background .12s;
+}
+.new-chat-btn:hover { background: var(--bg-hover); }
+
+.convo-heading {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.85rem 0.65rem 0.35rem;
+}
+
+.convo-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 0 0.15rem;
+}
+
+.convo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.42rem 0.6rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 12.5px;
+  min-width: 0;
+  transition: background .1s, color .1s;
+}
+.convo-item:hover,
+.convo-item.active { background: var(--bg-surface); color: var(--text-primary); }
+
+.convo-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.convo-del {
+  opacity: 0;
+  width: 14px;
+  height: 14px;
+  color: var(--text-faint);
+  transition: opacity .12s, color .12s;
+}
+.convo-item:hover .convo-del { opacity: 1; }
+.convo-del:hover { color: var(--danger); }
+
+.convo-empty {
+  padding: 0.7rem 0.65rem;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+.sidebar-spacer { flex: 1; }
+
+.sidebar-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  color: var(--text-muted);
+  transition: background .12s, color .12s;
+}
+.sidebar-btn:hover { background: var(--bg-surface); color: var(--text-primary); }
+
+/* ---------- Main workspace ---------- */
+.main-workspace {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-main);
+  overflow: hidden;
+}

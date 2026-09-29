@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>modcore AI</title>
+  <link rel="stylesheet" href="lib/speed-highlight.css" />
+  <link rel="stylesheet" href="styles/variables.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/icons.css" />
+  <link rel="stylesheet" href="styles/layout.css" />
+  <link rel="stylesheet" href="styles/chat.css" />
+  <link rel="stylesheet" href="styles/sidebar.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+</head>
+<body>
+
+  <div id="app-container" class="app-container">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-name">modcore AI</span>
+      </div>
+
+      <button id="new-chat-btn" class="new-chat-btn" type="button">
+        <span class="icon icon-plus"></span><span>New chat</span>
+      </button>
+
+      <div class="convo-heading">Recent</div>
+      <nav id="convo-list" class="convo-list"></nav>
+
+      <div class="sidebar-spacer"></div>
+
+      <button id="files-btn" class="sidebar-btn" type="button">
+        <span class="icon icon-panel"></span><span>Files</span>
+      </button>
+      <button id="settings-btn" class="sidebar-btn" type="button">
+        <span class="icon icon-settings"></span><span>Settings</span>
+      </button>
+    </aside>
+
+    <main class="main-workspace">
+      <div id="chat-container" class="chat-container"></div>
+
+      <div class="composer">
+        <div id="attachment-preview" class="attachment-preview"></div>
+        <div class="composer-box">
+          <input type="file" id="file-input" multiple hidden />
+          <button id="attach-btn" class="attach-btn icon-btn" type="button" title="Attach">
+            <span class="icon icon-plus"></span>
+          </button>
+          <textarea id="user-input" class="chat-input" placeholder="Ask modcore AI to do something…" rows="1"></textarea>
+          <button id="send-btn" class="send-btn" type="button" title="Send">
+            <span class="icon icon-arrow-up"></span>
+          </button>
+        </div>
+        <div class="composer-footer">
+          <span class="ai-notice">AI can make mistakes — verify important info.</span>
+          <select id="quick-model" class="quick-model" title="Model"></select>
+        </div>
+      </div>
+    </main>
+
+    <!-- Unified sidebar: files, settings, or any pluggable view -->
+    <aside id="sidebar-panel" class="sidebar-panel">
+      <header class="sidebar-panel-head">
+        <button id="sidebar-back" class="side-icon-btn" type="button" hidden title="Back">
+          <span class="icon icon-arrow-left"></span>
+        </button>
+        <div class="sidebar-titles">
+          <div id="sidebar-title" class="sidebar-title">Files</div>
+          <div id="sidebar-subtitle" class="sidebar-subtitle"></div>
+        </div>
+        <div id="sidebar-actions" class="sidebar-actions"></div>
+        <button id="sidebar-close" class="side-icon-btn" type="button" title="Close">
+          <span class="icon icon-x"></span>
+        </button>
+      </header>
+      <nav id="sidebar-tabs" class="sidebar-tabs"></nav>
+      <div id="sidebar-body" class="sidebar-body"></div>
+    </aside>
+  </div>
+
+  <dialog id="confirm-dialog" class="modal">
+    <form method="dialog" class="modal-body">
+      <h3 id="confirm-title">Confirm</h3>
+      <p id="confirm-message" class="modal-message"></p>
+      <div class="modal-actions">
+        <button id="cancel-action-btn" class="btn btn-ghost" value="cancel">Cancel</button>
+        <button id="confirm-action-btn" class="btn btn-danger" value="confirm">Allow</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="js/ui.js"></script>
+</body>
+</html>
